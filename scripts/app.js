@@ -139,6 +139,28 @@ function filterTasks(e){
 
 /*
 // Second approach
+
+// Load Tasks
+document.addEventListener('DOMContentLoaded', () => {
+  let tasks;
+  tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
+  console.log(tasks);
+
+  tasks.forEach( task => {
+    // Create and append a task to the taskList
+    const html = `
+    <li class="collection-item">
+    ${task}
+    <a href="#" class="delete-item secondary-content">
+    <i class="fas fa-trash-alt"></i> 
+    </a>
+    </li>
+    `;
+    
+    taskList.innerHTML += html;
+  });
+});
+
 // Add task using template literals
 form.addEventListener('submit', e => {
   e.preventDefault();
