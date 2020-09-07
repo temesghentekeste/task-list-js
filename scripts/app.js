@@ -5,6 +5,10 @@ const clearBtn = document.querySelector('.clear-tasks');
 const filter = document.querySelector('#filter');
 const taskInput = document.querySelector('#task');
 
+/**
+ * First Approach to add task to the task list ul
+ * 
+ */
 //Load  all event listners
 loadEventListners();
 
@@ -44,6 +48,30 @@ function addTask(e) {
   // Clear Input
   taskInput.value = '';
 }
+
+
+/**
+//Second approach to add task using template
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  if(taskInput.value === ''){
+    alert('Add Task');
+  }
+
+  // Create and append a task to the taskList
+  const html = `
+    <li class="collection-item">
+      ${taskInput.value}
+      <a href="#" class="delete-item secondary-content">
+        <i class="fas fa-trash-alt"></i> 
+      </a>
+    </li>
+  `;
+
+  taskList.innerHTML += html;
+  taskInput.value = '';
+});
+ */
 
 
 
