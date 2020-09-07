@@ -36,9 +36,9 @@ Task List is a project intended to showcase DOM Manipulation skills using Vanill
 ## Screenshots <a name = "screenshots"></a>
 
 ### Wide Screen
-![screenshot](./images/screencapture-desktop.png) 
+![screenshot](./images/screencapture-widescreen.png) 
 ### Small Screen
-![screenshot](./images/screencapture-mobile.png) 
+![screenshot](./images/screencapture-smallscreen.png) 
 
 ## 🔧 Built with<a name = "with"></a>
 
@@ -77,7 +77,7 @@ Task List is a project intended to showcase DOM Manipulation skills using Vanill
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/temesghentekeste/css-linter/issues).
+Feel free to check the [issues page](https://github.com/temesghentekeste/task-list-js/issues).
 
 
 ## 👍 Show your support
@@ -85,6 +85,6 @@ Feel free to check the [issues page](https://github.com/temesghentekeste/css-lin
 Give a ⭐️ if you like this project!
 
 ## :clap: Acknowledgements
+- <a href="https://www.udemy.com/course/modern-javascript-from-the-beginning/" target="_blank">Modern JavaScript From The Beginning</a>
 - <a href="https://www.microverse.org/" target="_blank">microverse.org</a>
-- <a href="https://www.theodinproject.com/" target="_blank">The Odin Project</a>
 </div>
