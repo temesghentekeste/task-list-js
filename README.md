@@ -30,7 +30,7 @@ Task List is a project intended to showcase DOM Manipulation skills using Vanill
 
 ## 🔴 Live Demo <a name = "live"></a>
 
-**Click [here](https://www.loom.com/share/184bb24d5a5e4c938ab5a1abcdc7f9e7) in order to see a Live Demo of this project.**
+**Click [here](https://tasklist-js-temesghen.netlify.app/) in order to see a Live Demo of this project.**
 
 ## Screenshots <a name = "screenshots"></a>
 
