@@ -164,26 +164,35 @@ function filterTasks(e){
   
 // /*
 // Second approach
+
+const render = taskItem => {
+  // Create and append a task to the taskList
+  const html = `
+  <li class="collection-item">
+  ${taskItem.trim()}
+  <a href="#" class="delete-item secondary-content">
+  <i class="fas fa-trash-alt"></i> 
+  </a>
+  </li>
+  `;
+  
+  taskList.innerHTML += html;
+}
   
 // Load Tasks
 document.addEventListener('DOMContentLoaded', () => {
-  let tasks;
-  tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
-
+  let tasks = getTasks();
+  
   tasks.forEach( task => {
-    // Create and append a task to the taskList
-    const html = `
-    <li class="collection-item">
-    ${task}
-    <a href="#" class="delete-item secondary-content">
-    <i class="fas fa-trash-alt"></i> 
-    </a>
-    </li>
-    `;
-    
-    taskList.innerHTML += html;
+  // Render tasks
+  render(task);
   });
 });
+
+// Get Tasks
+const getTasks = () => {
+  return localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
+}
 
 // Add task using template literals
 form.addEventListener('submit', e => {
@@ -193,17 +202,8 @@ form.addEventListener('submit', e => {
     return;
   }
   
-  // Create and append a task to the taskList
-  const html = `
-  <li class="collection-item">
-  ${taskInput.value}
-  <a href="#" class="delete-item secondary-content">
-  <i class="fas fa-trash-alt"></i> 
-  </a>
-  </li>
-  `;
-  
-  taskList.innerHTML += html;
+  // Render task
+  render(taskInput.value);
   
   // Store in LS
   storeTaskInLocalStorage(taskInput.value);
@@ -214,12 +214,7 @@ form.addEventListener('submit', e => {
 
 // Store in LS
 const storeTaskInLocalStorage = task => {
-  let tasks;
-  if(localStorage.getItem('tasks') === null){
-    tasks = [];
-  }else{
-    tasks = JSON.parse(localStorage.getItem('tasks'));
-  }
+  let tasks = getTasks();
   tasks.push(task);
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
@@ -239,7 +234,7 @@ taskList.addEventListener('click', e => {
 
 // Remove task from LS
 const removeTaskFromLocalStorage = taskItem => {
-  let tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
+  let tasks = getTasks();
 
   tasks.forEach((task, index) => {
     if(taskItem.textContent.trim() === task) {
