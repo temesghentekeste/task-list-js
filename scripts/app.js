@@ -5,59 +5,60 @@ const clearBtn = document.querySelector('.clear-tasks');
 const filter = document.querySelector('#filter');
 const taskInput = document.querySelector('#task');
 
- // First approach 
- //Load  all event listners
- loadEventListners();
- 
- //Load  all event listners
- function loadEventListners() {
-   // DOM Load event
-   document.addEventListener('DOMContentLoaded', getTasks)
-   // Add task event
-   form.addEventListener('submit', addTask);
-   // Remove task event
-   taskList.addEventListener('click', removeTask);
-   // Clear tasks
-   clearBtn.addEventListener('click', clearTasks);
-  //  Filter tasks
-   filter.addEventListener('keyup', filterTasks);
-  };
+/*
+// First approach 
+//Load  all event listners
+loadEventListners();
 
-  // Get tasks
-  function getTasks(){
-    if(localStorage.getItem('tasks')){
-      let tasks;
-      tasks = JSON.parse(localStorage.getItem('tasks'));
-      
-      tasks.forEach( function(task) {
-        // Create li element
-        const li = document.createElement('li');
-        // Add a class
-        li.className = 'collection-item';
-        // Create a textNode and append to li
-        li.appendChild(document.createTextNode(task));
-        // Create new link element
-        const link = document.createElement('a');
-        // Add class
-        link.className = 'delete-item secondary-content';
-        // Add icon html
-        link.innerHTML = '<i class="fas fa-trash-alt"></i>'
-        // Append to li
-        li.appendChild(link);
-        
-        // Append li to task list
-        taskList.appendChild(li);
-
-      });
-
-    }
-  }
-  
+//Load  all event listners
+function loadEventListners() {
+  // DOM Load event
+  document.addEventListener('DOMContentLoaded', getTasks)
   // Add task event
-  function addTask(e) {
-    e.preventDefault();
+  form.addEventListener('submit', addTask);
+  // Remove task event
+  taskList.addEventListener('click', removeTask);
+  // Clear tasks
+  clearBtn.addEventListener('click', clearTasks);
+  //  Filter tasks
+  filter.addEventListener('keyup', filterTasks);
+};
+
+// Get tasks
+function getTasks(){
+  if(localStorage.getItem('tasks')){
+    let tasks;
+    tasks = JSON.parse(localStorage.getItem('tasks'));
     
-    if(taskInput.value === ''){
+    tasks.forEach( function(task) {
+      // Create li element
+      const li = document.createElement('li');
+      // Add a class
+      li.className = 'collection-item';
+      // Create a textNode and append to li
+      li.appendChild(document.createTextNode(task));
+      // Create new link element
+      const link = document.createElement('a');
+      // Add class
+      link.className = 'delete-item secondary-content';
+      // Add icon html
+      link.innerHTML = '<i class="fas fa-trash-alt"></i>'
+      // Append to li
+      li.appendChild(link);
+      
+      // Append li to task list
+      taskList.appendChild(li);
+      
+    });
+    
+  }
+}
+
+// Add task event
+function addTask(e) {
+  e.preventDefault();
+  
+  if(taskInput.value === ''){
     alert('Add a task', 'Task List');
     return;
   }
@@ -82,7 +83,7 @@ const taskInput = document.querySelector('#task');
   
   // Store in LS
   storeTaskInLocalStorage(taskInput.value);
-
+  
   // Clear Input
   taskInput.value = '';
 }
@@ -92,7 +93,7 @@ function removeTask(e) {
   if(e.target.parentElement.classList.contains('delete-item')){
     if(confirm('Are you sure?')) {
       e.target.parentElement.parentElement.remove();
-
+      
       // Remove task from LS
       removeTaskFromLocalStorage(e.target.parentElement.parentElement);
     }
@@ -102,7 +103,7 @@ function removeTask(e) {
 // Remove task from LS
 function removeTaskFromLocalStorage(taskItem){
   let tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
-
+  
   tasks.forEach((task, index) => {
     if(taskItem.textContent === task){
       tasks.splice(index, 1);
@@ -134,7 +135,7 @@ function clearTasks(e) {
   while(taskList.firstChild){
     taskList.removeChild(taskList.firstChild);
   }
-
+  
   // Clear Tasks from LS
   clearTasksFromLocalStorage();
 }
@@ -158,16 +159,16 @@ function filterTasks(e){
     }
     )
   }
+*/
   
-
-/*
+  
+// /*
 // Second approach
-
+  
 // Load Tasks
 document.addEventListener('DOMContentLoaded', () => {
   let tasks;
   tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
-  console.log(tasks);
 
   tasks.forEach( task => {
     // Create and append a task to the taskList
@@ -213,7 +214,6 @@ form.addEventListener('submit', e => {
 
 // Store in LS
 const storeTaskInLocalStorage = task => {
-  console.log(task);
   let tasks;
   if(localStorage.getItem('tasks') === null){
     tasks = [];
@@ -222,7 +222,6 @@ const storeTaskInLocalStorage = task => {
   }
   tasks.push(task);
   localStorage.setItem('tasks', JSON.stringify(tasks));
-  console.log(tasks);
 }
 
 // Second approach to remove task
@@ -230,9 +229,26 @@ taskList.addEventListener('click', e => {
   if(e.target.parentElement.classList.contains('delete-item')){
     if(confirm('Are you sure?')){
       e.target.parentElement.parentElement.remove();
+      
+      // Remove task from LS
+      removeTaskFromLocalStorage(e.target.parentElement.parentElement);
     }
+
   }
-})
+});
+
+// Remove task from LS
+const removeTaskFromLocalStorage = taskItem => {
+  let tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
+
+  tasks.forEach((task, index) => {
+    if(taskItem.textContent.trim() === task) {
+      tasks.splice(index, 1);
+    }
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  });
+}
 
 // Second approacht to clear tasks
 clearBtn.addEventListener('click', e => {
@@ -243,6 +259,9 @@ clearBtn.addEventListener('click', e => {
   while(taskList.firstChild){
     taskList.removeChild(taskList.firstChild);
   }
+
+  // Clear tasks from LS
+  clearTasksFromLocalStorage();
 }) 
 
 
@@ -258,7 +277,11 @@ filter.addEventListener('keyup', e => {
     }
   });
 });
-*/
+
+const clearTasksFromLocalStorage = () => {
+  localStorage.clear();
+}
+// */
 
 
 
