@@ -13,7 +13,6 @@
 <a href="#with">Built with</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#setup">Setup</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#prerequisites">Prerequisites</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-<a href="#testing">Testing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#author">Author</a>
 
 
@@ -59,12 +58,7 @@ Task List is a project intended to showcase DOM Manipulation skills using Vanill
 ## Prerequisites<a name = "prerequisites"></a>
 - A modern up-to-date browser
 
-## 🔨 Testing<a name = "testing"></a>
-- There is no automated testing for this project
-
-
 ## ✒️  Author <a name = "author"></a>
-
 
 👤 **Temesghen Tekeste**
 
