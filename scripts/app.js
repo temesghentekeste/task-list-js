@@ -21,7 +21,7 @@ function loadEventListners() {
   // Clear tasks
   clearBtn.addEventListener('click', clearTasks);
   // Filter tasks
-  filter.addEventListener('keyup', filterTasks);
+  // filter.addEventListener('keyup', filterTasks);
 };
 
 // Add task event
@@ -135,6 +135,19 @@ clearBtn.addEventListener('click', e => {
 }) 
 
 */
+
+// Second approach to filter tasks
+filter.addEventListener('keyup', e => {
+  const input = e.target.value.toLowerCase();
+  document.querySelectorAll('.collection-item').forEach( task => {
+    const text = task.firstChild.textContent.toLowerCase();
+    if(text.indexOf(input) != -1){
+      task.style.display = 'block';
+    }else{
+      task.style.display = 'none';
+    }
+  });
+});
 
 
 
