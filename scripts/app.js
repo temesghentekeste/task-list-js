@@ -87,13 +87,28 @@ const taskInput = document.querySelector('#task');
   taskInput.value = '';
 }
 
-// Add task
+// Remove task
 function removeTask(e) {
   if(e.target.parentElement.classList.contains('delete-item')){
     if(confirm('Are you sure?')) {
       e.target.parentElement.parentElement.remove();
+
+      // Remove task from LS
+      removeTaskFromLocalStorage(e.target.parentElement.parentElement);
     }
   }
+}
+
+// Remove task from LS
+function removeTaskFromLocalStorage(taskItem){
+  let tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
+
+  tasks.forEach((task, index) => {
+    if(taskItem.textContent === task){
+      tasks.splice(index, 1);
+    }
+  });
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 // Store in LS
