@@ -38,7 +38,7 @@ Task List is a project intended to showcase DOM Manipulation skills using Vanill
 ### Wide Screen
 ![screenshot](./images/screencapture-widescreen.png) 
 ### Small Screen
-![screenshot](./images/screencapture-smallscreen.png) 
+![screenshot](./images/screencapture-mobile.png) 
 
 ## 🔧 Built with<a name = "with"></a>
 
