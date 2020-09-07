@@ -52,7 +52,7 @@ Task List is a project intended to showcase DOM Manipulation skills using Vanill
 ### Run a Local Copy
 - Download the repository to a local directory on your computer.
 - Or run the following commands on the terminal
-  - git clone git@github.com:temesghentekeste/task-list-js.git
+  - git clone https://github.com/temesghentekeste/task-list-js.git
   - cd task-list-js
   - open index.html file
 
