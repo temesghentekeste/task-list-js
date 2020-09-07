@@ -51,6 +51,7 @@ function addTask(e) {
   taskInput.value = '';
 }
 
+// Add task
 function removeTask(e) {
   if(e.target.parentElement.classList.contains('delete-item')){
     if(confirm('Are you sure?')) {
@@ -61,7 +62,8 @@ function removeTask(e) {
 
 
 /**
-//Second approach to add task using template
+// Second approach
+// Add task using template literals
 form.addEventListener('submit', e => {
   e.preventDefault();
   if(taskInput.value === ''){
@@ -81,7 +83,16 @@ form.addEventListener('submit', e => {
   taskList.innerHTML += html;
   taskInput.value = '';
 });
- */
 
+// Second approach to remove task
+taskList.addEventListener('click', e => {
+  if(e.target.parentElement.classList.contains('delete-item')){
+    if(confirm('Are you sure?')){
+      e.target.parentElement.parentElement.remove();
+    }
+  }
+})
+
+*/
 
 
