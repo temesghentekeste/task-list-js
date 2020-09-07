@@ -11,6 +11,8 @@ const taskInput = document.querySelector('#task');
  
  //Load  all event listners
  function loadEventListners() {
+   // DOM Load event
+   document.addEventListener('DOMContentLoaded', getTasks)
    // Add task event
    form.addEventListener('submit', addTask);
    // Remove task event
@@ -20,6 +22,36 @@ const taskInput = document.querySelector('#task');
   //  Filter tasks
    filter.addEventListener('keyup', filterTasks);
   };
+
+  // Get tasks
+  function getTasks(){
+    if(localStorage.getItem('tasks')){
+      let tasks;
+      tasks = JSON.parse(localStorage.getItem('tasks'));
+      
+      tasks.forEach( function(task) {
+        // Create li element
+        const li = document.createElement('li');
+        // Add a class
+        li.className = 'collection-item';
+        // Create a textNode and append to li
+        li.appendChild(document.createTextNode(task));
+        // Create new link element
+        const link = document.createElement('a');
+        // Add class
+        link.className = 'delete-item secondary-content';
+        // Add icon html
+        link.innerHTML = '<i class="fas fa-trash-alt"></i>'
+        // Append to li
+        li.appendChild(link);
+        
+        // Append li to task list
+        taskList.appendChild(li);
+
+      });
+
+    }
+  }
   
   // Add task event
   function addTask(e) {
@@ -182,6 +214,9 @@ filter.addEventListener('keyup', e => {
   });
 });
 */
+
+
+
 
 
 
