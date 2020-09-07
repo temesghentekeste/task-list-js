@@ -1,12 +1,12 @@
 // UI Elements
 const form = document.querySelector('#task-form');
 const taskList = document.querySelector('.collection');
-const clearBtn = document.querySelector('.clear-tasks'); 
+const clearBtn = document.querySelector('.clear-tasks');
 const filter = document.querySelector('#filter');
 const taskInput = document.querySelector('#task');
 
 /*
-// First approach 
+// First approach
 //Load  all event listners
 loadEventListners();
 
@@ -29,7 +29,7 @@ function getTasks(){
   if(localStorage.getItem('tasks')){
     let tasks;
     tasks = JSON.parse(localStorage.getItem('tasks'));
-    
+
     tasks.forEach( function(task) {
       // Create li element
       const li = document.createElement('li');
@@ -45,24 +45,24 @@ function getTasks(){
       link.innerHTML = '<i class="fas fa-trash-alt"></i>'
       // Append to li
       li.appendChild(link);
-      
+
       // Append li to task list
       taskList.appendChild(li);
-      
+
     });
-    
+
   }
 }
 
 // Add task event
 function addTask(e) {
   e.preventDefault();
-  
+
   if(taskInput.value === ''){
     alert('Add a task', 'Task List');
     return;
   }
-  
+
   // Create li element
   const li = document.createElement('li');
   // Add a class
@@ -77,13 +77,13 @@ function addTask(e) {
   link.innerHTML = '<i class="fas fa-trash-alt"></i>'
   // Append to li
   li.appendChild(link);
-  
+
   // Append li to task list
   taskList.appendChild(li);
-  
+
   // Store in LS
   storeTaskInLocalStorage(taskInput.value);
-  
+
   // Clear Input
   taskInput.value = '';
 }
@@ -93,7 +93,7 @@ function removeTask(e) {
   if(e.target.parentElement.classList.contains('delete-item')){
     if(confirm('Are you sure?')) {
       e.target.parentElement.parentElement.remove();
-      
+
       // Remove task from LS
       removeTaskFromLocalStorage(e.target.parentElement.parentElement);
     }
@@ -103,7 +103,7 @@ function removeTask(e) {
 // Remove task from LS
 function removeTaskFromLocalStorage(taskItem){
   let tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
-  
+
   tasks.forEach((task, index) => {
     if(taskItem.textContent === task){
       tasks.splice(index, 1);
@@ -130,12 +130,12 @@ function storeTaskInLocalStorage(task) {
 function clearTasks(e) {
   // Slower
   // taskList.innerHTML = '';
-  
+
   //Faster
   while(taskList.firstChild){
     taskList.removeChild(taskList.firstChild);
   }
-  
+
   // Clear Tasks from LS
   clearTasksFromLocalStorage();
 }
@@ -160,8 +160,8 @@ function filterTasks(e){
     )
   }
 */
-  
-  
+
+
 // /*
 // Second approach
 
@@ -175,111 +175,105 @@ const render = taskItem => {
   </a>
   </li>
   `;
-  
+
   taskList.innerHTML += html;
-}
-  
-// Load Tasks
-document.addEventListener('DOMContentLoaded', () => {
-  let tasks = getTasks();
-  
-  tasks.forEach( task => {
-  // Render tasks
-  render(task);
-  });
-});
+};
 
 // Get Tasks
-const getTasks = () => {
-  return localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
-}
+const getTasks = () => (localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : []);
 
-// Add task using template literals
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  if(taskInput.value === ''){
-    alert('Add Task');
-    return;
-  }
-  
-  // Render task
-  render(taskInput.value);
-  
-  // Store in LS
-  storeTaskInLocalStorage(taskInput.value);
-  
-  // Clear input
-  taskInput.value = '';
+// Load Tasks
+document.addEventListener('DOMContentLoaded', () => {
+  const tasks = getTasks();
+
+  tasks.forEach(task => {
+  // Render tasks
+    render(task);
+  });
 });
 
 // Store in LS
 const storeTaskInLocalStorage = task => {
-  let tasks = getTasks();
+  const tasks = getTasks();
   tasks.push(task);
   localStorage.setItem('tasks', JSON.stringify(tasks));
-}
+};
 
-// Second approach to remove task
-taskList.addEventListener('click', e => {
-  if(e.target.parentElement.classList.contains('delete-item')){
-    if(confirm('Are you sure?')){
-      e.target.parentElement.parentElement.remove();
-      
-      // Remove task from LS
-      removeTaskFromLocalStorage(e.target.parentElement.parentElement);
-    }
-
+// Add task using template literals
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  if (taskInput.value === '') {
+    alert('Add Task'); // eslint-disable-line no-alert
+    return;
   }
+
+  // Render task
+  render(taskInput.value);
+
+  // Store in LS
+  storeTaskInLocalStorage(taskInput.value);
+
+  // Clear input
+  taskInput.value = '';
 });
 
 // Remove task from LS
 const removeTaskFromLocalStorage = taskItem => {
-  let tasks = getTasks();
+  const tasks = getTasks();
 
   tasks.forEach((task, index) => {
-    if(taskItem.textContent.trim() === task) {
+    if (taskItem.textContent.trim() === task) {
       tasks.splice(index, 1);
     }
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
   });
-}
+};
+
+// Second approach to remove task
+taskList.addEventListener('click', e => {
+  if (e.target.parentElement.classList.contains('delete-item')) {
+  // eslint-disable-next-line no-restricted-globals
+    if (confirm('Are you sure?')) { // eslint-disable-line no-alert
+      e.target.parentElement.parentElement.remove();
+
+      // Remove task from LS
+      removeTaskFromLocalStorage(e.target.parentElement.parentElement);
+    }
+  }
+});
+
+// Clear Task from localStorage
+const clearTasksFromLocalStorage = () => {
+  localStorage.clear();
+};
 
 // Second approacht to clear tasks
-clearBtn.addEventListener('click', e => {
+clearBtn.addEventListener('click', () => {
   // Slower
   // taskList.innerHTML = '';
-  
+
   // Faster
-  while(taskList.firstChild){
+  while (taskList.firstChild) {
     taskList.removeChild(taskList.firstChild);
   }
 
   // Clear tasks from LS
   clearTasksFromLocalStorage();
-}) 
+});
 
 
 // Second approach to filter tasks
 filter.addEventListener('keyup', e => {
   const input = e.target.value.toLowerCase();
-  document.querySelectorAll('.collection-item').forEach( task => {
+  document.querySelectorAll('.collection-item').forEach(task => {
     const text = task.firstChild.textContent.toLowerCase();
-    if(text.indexOf(input) != -1){
+    if (text.indexOf(input) !== -1) {
       task.style.display = 'block';
-    }else{
+    } else {
       task.style.display = 'none';
     }
   });
 });
 
-const clearTasksFromLocalStorage = () => {
-  localStorage.clear();
-}
 // */
-
-
-
-
-
-

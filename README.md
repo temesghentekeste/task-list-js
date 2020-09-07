@@ -1,23 +1,24 @@
 # Task List
 
-[![View Code](https://img.shields.io/badge/View%20-Code-green)](https://github.com/temesghentekeste/css-linter/pulls)
-[![Github Issues](https://img.shields.io/badge/GitHub-Issues-orange)](https://github.com/temesghentekeste/css-linter/issues)
-[![GitHub Pull Requests](https://img.shields.io/badge/GitHub-Pull%20Requests-blue)](https://github.com/temesghentekeste/css-linter/pulls)
+[![View Code](https://img.shields.io/badge/View%20-Code-green)](https://github.com/temesghentekeste/task-list-js/pulls)
+[![Github Issues](https://img.shields.io/badge/GitHub-Issues-orange)](https://github.com/temesghentekeste/task-list-js/issues)
+
 
 ## Content
 
 <a text-align="center" href="#about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#live">Live Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#screenshots">Screenshots</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-<a href="#ins">Installing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#with">Built with</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#setup">Setup</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-<a href="#ldl">Live Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-<a href="#gandb">Code examples</a>
+<a href="#prerequisites">Prerequisites</a>
+<a href="#testing">Testing</a>
 <a href="#author">Author</a>
 
 
 ## About <a name = "about"></a>
+
 Task List is a project intended to showcase DOM Manipulation skills using Vanilla JavaScript. Local storage is used to persist the data.
 
 <h3>Description <a name = "description"></a></h3>
@@ -28,24 +29,24 @@ Task List is a project intended to showcase DOM Manipulation skills using Vanill
 <li>Clear all tasks</li>
 <li>Persist tasks using browser's localStorage</li>
 
+## 🔴 Live Demo <a name = "live"></a>
+
+**Click [here](https://www.loom.com/share/184bb24d5a5e4c938ab5a1abcdc7f9e7) in order to see a Live Demo of this project.**
+
 ## Screenshots <a name = "screenshots"></a>
-### Screenshot of linter passing with no errors
-![screenshot](./images/single_file_scanning.png) 
+
+### Wide Screen
+![screenshot](./images/screencapture-desktop.png) 
+### Small Screen
+![screenshot](./images/screencapture-mobile.png) 
 
 ## 🔧 Built with<a name = "with"></a>
 
 - HTML
 - Materialize
-- Vanill JavaScript
+- Vanilla JavaScript
 - ES6
-
-
-## 🔴 Live Demo <a name = "ldl"></a>
-
-
-**Click [here](https://www.loom.com/share/184bb24d5a5e4c938ab5a1abcdc7f9e7) in order to see a Live Demo of this project.**
-
-
+- ESLint
 
 ## 🔨 Setup<a name = "setup"></a>
 ### Run a Local Copy
@@ -55,10 +56,10 @@ Task List is a project intended to showcase DOM Manipulation skills using Vanill
   - cd task-list-js
   - open index.html file
 
-## Prerequisites<a name = "gandb"></a>
+## Prerequisites<a name = "prerequisites"></a>
 - A modern up-to-date browser
 
-## 🔨 Testing
+## 🔨 Testing<a name = "testing"></a>
 - There is no automated testing for this project
 
 
@@ -69,7 +70,7 @@ Task List is a project intended to showcase DOM Manipulation skills using Vanill
 
 - Github: [@temesghentekeste](https://github.com/temesghentekeste)
 - Twitter: [@temesghentekes1](https://twitter.com/temesghentekes1)
-- Linkedin: [temsghen-tekeste-bahta-8b5243193](https://www.linkedin.com/in/temesghen-tekeste-bahta-8b5243193/)
+- Linkedin: [temsghen tekeste](https://www.linkedin.com/in/temesghentekeste/)
 
 
 ## 🤝 Contributing
